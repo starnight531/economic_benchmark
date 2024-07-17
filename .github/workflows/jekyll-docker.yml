@@ -1,21 +1,19 @@
-name: Deploy Static HTML
+name: Deploy HTML File with Jekyll Docker
 
 on:
   push:
     branches:
-      - master  # 或者是你想要触发 workflow 的分支
+      - master  # 根据你的默认分支进行调整
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: .  # 如果你的 HTML 文件在根目录下
+      - name: Deploy HTML File
+        run: |
+          cp risingsun.html ${{ github.workspace }}
 
