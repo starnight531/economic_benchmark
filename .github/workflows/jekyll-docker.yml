@@ -18,5 +18,4 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: .  # 如果你的 HTML 文件在根目录下
-        # 如果你的 HTML 文件在子目录下，例如 'public' 目录，使用 'publish_dir: ./public'
 
