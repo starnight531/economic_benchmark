@@ -1,26 +1,22 @@
-name: Deploy HTML file to GitHub Pages
+name: Deploy Static HTML
 
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
-permissions:
-  contents: write
+    branches:
+      - main  # 或者是你想要触发 workflow 的分支
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v3
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: . # 部署根目录下的文件
-                  
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: .  # 如果你的 HTML 文件在根目录下
+        # 如果你的 HTML 文件在子目录下，例如 'public' 目录，使用 'publish_dir: ./public'
+
