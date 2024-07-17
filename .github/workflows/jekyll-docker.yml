@@ -1,19 +1,1 @@
-name: Deploy HTML File with Jekyll Docker
-
-on:
-  push:
-    branches:
-      - master  # 根据你的默认分支进行调整
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Deploy HTML File
-        run: |
-          cp risingsun.html ${{ github.workspace }}
 
